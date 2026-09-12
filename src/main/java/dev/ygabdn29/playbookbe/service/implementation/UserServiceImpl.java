@@ -9,20 +9,14 @@ import org.springframework.stereotype.Service;
 
 import dev.ygabdn29.playbookbe.entity.User;
 import dev.ygabdn29.playbookbe.service.UserService;
+import lombok.RequiredArgsConstructor;
 import dev.ygabdn29.playbookbe.repository.UserRepository;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
-  @Autowired
-  private PasswordEncoder passwordEncoder;
-
-  @Autowired
-  private UserRepository userRepository;
-
-  UserServiceImpl(PasswordEncoder passwordEncoder) {
-    this.passwordEncoder = passwordEncoder;
-  }
+  private final UserRepository userRepository;
+  private final PasswordEncoder passwordEncoder;
 
   @Override
   public List<User> getAll() {
@@ -44,17 +38,6 @@ public class UserServiceImpl implements UserService {
   public Boolean delete(UUID id) {
     userRepository.deleteById(id);
     return userRepository.findById(id).isEmpty();
-  }
-
-  @Override
-  public User authenticate(String username, String password) {
-    User user = userRepository.findByUsername(username);
-
-    if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-      return user;
-    } else {
-      return null;
-    }
   }
 
 }
