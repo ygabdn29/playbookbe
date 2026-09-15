@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class AuthResponse {
   private UUID id;
   private String username;
+  private Boolean isDemo;
 }
