@@ -2,6 +2,7 @@ package dev.ygabdn29.playbookbe.entity;
 
 import java.util.UUID;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +31,8 @@ public class User {
   @Column(name = "password")
   private String password;
 
-  @Column(name = "steam_id")
+  @Column(name = "steam_id", nullable = true)
+  @Nullable
   private String steamId;
 
 }

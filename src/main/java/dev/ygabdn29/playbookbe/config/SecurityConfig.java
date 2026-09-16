@@ -22,7 +22,7 @@ public class SecurityConfig {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/v1/login").permitAll()
+            .requestMatchers("/api/v1/auth/login").permitAll()
             .requestMatchers("/api/v1/auth/**").authenticated()
             .anyRequest().authenticated())
         .cors(cors -> cors.configurationSource(corsConfiguration()))
