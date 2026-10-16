@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Other ###
+*.properties
+!gradle-wrapper.properties
