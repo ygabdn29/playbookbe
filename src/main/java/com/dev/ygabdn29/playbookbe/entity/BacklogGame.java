@@ -17,7 +17,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Column;
 
 @Entity
-@Table(name = "tbl_tr_game", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "game_id" }) })
+@Table(name = "tbl_tr_game", uniqueConstraints = {
+    @UniqueConstraint(columnNames = { "user_id", "game_id" }, name = "uk_tbl_tr_game_user_game") })
 @NoArgsConstructor
 @Setter
 @Getter
